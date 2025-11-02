@@ -3867,7 +3867,9 @@ public class AITorqueEntity {
      */
     public void consumeNearbyBlocks() {
         Location loc = bukkitEntity.getLocation();
-        int radius = (int)(5 + getCurrentPhase());
+        // Phase-based block consumption: Phase 1 = 1 block, Phase 1000 = 100 blocks
+        int currentPhase = getCurrentPhase();
+        int radius = Math.max(1, Math.min((int)(currentPhase * 0.1), 100));
         int consumed = 0;
 
         for (int x = -radius; x <= radius; x++) {
@@ -4054,10 +4056,15 @@ public class AITorqueEntity {
 
     /**
      * Consume EVERYTHING nearby - mobs, items, blocks, entities
+     * Phase-based scaling: Phase 1 = 1 block, Phase 1000+ = entire villages (100+ blocks)
      */
     private void consumeEverythingNearby() {
         Location loc = bukkitEntity.getLocation();
-        double consumeRadius = 10.0 + (currentSize * 2.0); // Radius grows with size
+
+        // Phase-based radius scaling: starts at 1 block, scales to 100+ blocks at phase 1000
+        int currentPhase = getCurrentPhase();
+        double consumeRadius = Math.min(1.0 + (currentPhase * 0.1), 150.0); // Cap at 150 blocks
+
         Collection<Entity> nearby = loc.getWorld().getNearbyEntities(loc, consumeRadius, consumeRadius, consumeRadius);
 
         int consumed = 0;
@@ -4084,10 +4091,16 @@ public class AITorqueEntity {
                     continue;
                 }
 
-                // Consume players if hostile
+                // Consume players ONLY when hostile (never consume creative mode players)
                 if (isHostile && living instanceof Player) {
-                    // Only drain their HP, don't fully consume them
                     Player player = (Player) living;
+
+                    // NEVER consume creative mode players (they can still be attacked, but not consumed)
+                    if (player.getGameMode() == org.bukkit.GameMode.CREATIVE) {
+                        continue;
+                    }
+
+                    // Only drain their HP in survival/adventure mode, don't fully consume them
                     double distance = player.getLocation().distance(bukkitEntity.getLocation());
                     if (distance < 5.0) {
                         double drain = 1.0 + (evolutionStage * 0.1);
