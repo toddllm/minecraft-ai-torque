@@ -7,8 +7,8 @@
 spawn:
   natural: false              # Allow natural spawning in world
   command-only: false         # Allow spawning via commands
-  spawn-on-server-start: true  # AI Torque spawns when server starts
-  spawn-on-first-player-join: false # Spawn when first player joins
+  spawn-on-server-start: false  # AI Torque spawns when server starts
+  spawn-on-first-player-join: true # Spawn when first player joins (RECOMMENDED)
   spawn-depth: 100            # How deep underground to spawn (Y level)
   tunnel-up: true             # AI Torque tunnels up from underground
   tunnel-speed: 20            # Blocks per second when tunneling (FAST!)

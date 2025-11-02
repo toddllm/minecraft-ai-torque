@@ -31,10 +31,11 @@ public class PlayerListener implements Listener {
 
             Player player = event.getPlayer();
 
-            // Wait 2 seconds then spawn under player
+            // Wait 30 seconds to allow terrain to load and mobs to spawn naturally
+            // This ensures creepers, zombies, etc. exist before AI Torque hunts them
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 plugin.spawnTorqueUnderPlayer(player);
-            }, 40L);
+            }, 600L); // 30 seconds (20 ticks/second)
         }
     }
 
