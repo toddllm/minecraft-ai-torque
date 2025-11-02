@@ -31,11 +31,12 @@ public class PlayerListener implements Listener {
 
             Player player = event.getPlayer();
 
-            // Wait 30 seconds to allow terrain to load and mobs to spawn naturally
-            // This ensures creepers, zombies, etc. exist before AI Torque hunts them
+            // Wait 5 seconds to allow terrain to load after player joins
+            // AI Torque spawns BEFORE natural mob spawning begins, establishing itself as apex predator
+            // Mobs spawn naturally into a world where AI Torque already exists
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 plugin.spawnTorqueUnderPlayer(player);
-            }, 600L); // 30 seconds (20 ticks/second)
+            }, 100L); // 5 seconds (20 ticks/second)
         }
     }
 
