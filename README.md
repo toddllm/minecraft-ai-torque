@@ -28,6 +28,8 @@ An apocalyptic Minecraft boss entity that evolves, consumes everything, and unle
 
 ## Quick Start
 
+### Server Setup
+
 ```bash
 # Build plugin
 cd aitorque-plugin
@@ -38,7 +40,21 @@ cd deployment
 ./deploy.sh user@your-server-ip
 ```
 
-See [full documentation](deployment/README.md) for detailed setup instructions.
+See [server deployment guide](deployment/README.md) for detailed setup instructions.
+
+### Client Setup
+
+**To connect from Minecraft client:**
+
+1. Install Minecraft Java Edition **1.21.8**
+2. Add server: `your-server-ip:25565` (survival) or `:25566` (creative)
+3. Recommended: Install Sodium mod for 3-5x FPS boost
+
+See **[CLIENT_GUIDE.md](CLIENT_GUIDE.md)** for:
+- Launcher options (Modrinth, vanilla, etc.)
+- Recommended performance mods
+- Graphics settings
+- Troubleshooting connection issues
 
 ## License
 
