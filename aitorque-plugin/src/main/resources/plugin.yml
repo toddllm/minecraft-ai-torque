@@ -1,0 +1,27 @@
+name: AITorque
+version: '${project.version}'
+main: com.aitorque.AITorquePlugin
+api-version: '1.21'
+author: AITorque Development Team
+description: OMEGA Classification Mega Boss - The Ultimate Minecraft Challenge
+
+commands:
+  aitorque:
+    description: Main AI Torque command
+    usage: /aitorque <spawn|remove|phase|debug>
+    permission: aitorque.admin
+  spawnторque:
+    description: Spawn AI Torque at your location
+    usage: /spawntorque
+    permission: aitorque.spawn
+
+permissions:
+  aitorque.admin:
+    description: Full access to AI Torque admin commands
+    default: true
+  aitorque.spawn:
+    description: Allows spawning AI Torque
+    default: true
+  aitorque.debug:
+    description: Access to debug commands
+    default: true

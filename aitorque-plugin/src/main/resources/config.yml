@@ -1,0 +1,171 @@
+# AI Torque Configuration File
+# OMEGA Classification Mega Boss
+
+# ============================================
+# SPAWN SETTINGS
+# ============================================
+spawn:
+  natural: false              # Allow natural spawning in world
+  command-only: false         # Allow spawning via commands
+  spawn-on-server-start: true  # AI Torque spawns when server starts
+  spawn-on-first-player-join: false # Spawn when first player joins
+  spawn-depth: 100            # How deep underground to spawn (Y level)
+  tunnel-up: true             # AI Torque tunnels up from underground
+  tunnel-speed: 20            # Blocks per second when tunneling (FAST!)
+  show-skull-marker: true     # Show skull particles marking AI Torque's location
+  max-instances: 1            # Maximum AI Torques that can exist (recommend 1)
+
+# ============================================
+# DIFFICULTY SETTINGS
+# ============================================
+difficulty:
+  health-multiplier: 1.0      # Multiply base health (default: 1.0)
+  damage-multiplier: 1.0      # Multiply damage output (default: 1.0)
+  phase-speed: 1.0            # How fast phases progress (default: 1.0)
+
+# ============================================
+# PHASE CONFIGURATION
+# ============================================
+phases:
+  enable-all: true            # Enable all phases
+  max-phase: 999999           # Infinite phases
+  allow-transformations: true # Allow Zikes, TEOTU, Medinuio forms
+
+# ============================================
+# ABILITY TOGGLES
+# ============================================
+abilities:
+  # Infection System
+  infection:
+    enabled: true
+    spread-range: 32          # Blocks from AI Torque where infection spreads
+    max-parasites: 100        # Max infected villagers
+
+  # Cloning System
+  cloning:
+    enabled: true
+    max-clones: 10            # Maximum clones
+    clone-near-villages: true
+
+  # Health Mechanics
+  health-drain:
+    enabled: true
+    drain-range: 16           # Blocks
+    drain-rate: 0.5           # Health per second
+
+  healing-towers:
+    enabled: true
+    max-towers: 5
+    healing-rate: 1.0         # HP per second
+    respawn-time: 300         # Seconds
+
+  # Grabbing & Consumption
+  grabbing:
+    enabled: true
+    max-orbiting-objects: 50
+    grab-range-phase-1: 10    # Blocks
+    grab-range-phase-3: 32
+    grab-range-phase-5: 64
+
+  # Mask System
+  masks:
+    enabled: true
+    starting-masks: 4
+    max-masks: 16
+    regeneration-chance: 0.5  # 50% chance to spawn 2 on destroy
+
+  # Weather Control
+  weather:
+    enabled: true
+    storm-radius: 128         # Blocks
+    lightning-frequency: 5    # Seconds between strikes
+
+  # Type System (Pokemon)
+  type-system:
+    enabled: true
+    require-all-types: true   # Must defeat all types to progress
+
+# ============================================
+# BEHAVIOR SETTINGS
+# ============================================
+behavior:
+  neutral-by-default: true    # Starts neutral (like Enderman)
+  aggro-on-attack: true       # Becomes hostile when attacked
+  aggro-on-close-approach: false
+  aggro-distance: 8           # Blocks - triggers hostility
+
+  # Neutral Activities
+  neutral-activities:
+    read-books: true
+    brew-potions: true
+    do-jobs: true
+
+# ============================================
+# SPECIAL MECHANICS
+# ============================================
+mechanics:
+  statue-drops:
+    enabled: true
+    drop-chance: 0.1          # 10% chance per minute
+
+  wood-trigger:
+    enabled: true
+    power-multiplier: 50000000000  # Power per wood block
+
+  terrain-destruction:
+    enabled: true
+    max-radius: 256           # Blocks
+
+  immortality:
+    enabled: true             # Can only be tired, not killed
+    exhaustion-threshold: 0   # When fully tired (0 energy)
+
+# ============================================
+# PERFORMANCE SETTINGS
+# ============================================
+performance:
+  tick-rate: 1                # How often AI Torque updates (ticks)
+  max-particles: 1000         # Max particles at once
+  unload-distant-clones: true
+  clone-unload-distance: 256  # Chunks
+
+# ============================================
+# VISUAL EFFECTS
+# ============================================
+effects:
+  particles:
+    enabled: true
+    intensity: 1.0            # Particle spawn multiplier
+
+  sounds:
+    enabled: true
+    volume: 1.0
+
+  size-scaling:
+    enabled: true
+    max-size-multiplier: 10000 # Visual size limit
+
+# ============================================
+# CHAT & COMMUNICATION
+# ============================================
+communication:
+  chat-enabled: true
+  broadcast-phase-changes: true
+  broadcast-transformations: true
+
+  messages:
+    spawn: "&6[AI Torque] &cA cosmic entity has awakened..."
+    phase-5: "&6[AI Torque] &4I grow stronger..."
+    zikes: "&6[AI Torque] &cYou are very strong, but I can't lose"
+    medinuio: "&6[AI Torque] &5Medinuio aura, the final form..."
+    tired: "&6[AI Torque] &7Impossible... the odds..."
+
+# ============================================
+# DEBUG OPTIONS
+# ============================================
+debug:
+  enabled: false
+  log-phase-changes: false
+  log-ability-usage: false
+  show-hitboxes: false
+  show-grab-zones: false

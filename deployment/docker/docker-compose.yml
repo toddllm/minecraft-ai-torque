@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  survival:
+    image: openjdk:21-jre-slim
+    container_name: aitorque-survival
+    restart: unless-stopped
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./survival:/data
+    working_dir: /data
+    command: java -Xmx8G -Xms4G -jar paper-1.21.8.jar --nogui
+    environment:
+      - TZ=America/New_York
+    mem_limit: 10g
+    mem_reservation: 4g
+    networks:
+      - minecraft
+
+  creative:
+    image: openjdk:21-jre-slim
+    container_name: aitorque-creative
+    restart: unless-stopped
+    ports:
+      - "25566:25566"
+    volumes:
+      - ./creative:/data
+    working_dir: /data
+    command: java -Xmx8G -Xms4G -jar paper-1.21.8.jar --nogui
+    environment:
+      - TZ=America/New_York
+    mem_limit: 10g
+    mem_reservation: 4g
+    networks:
+      - minecraft
+
+networks:
+  minecraft:
+    driver: bridge

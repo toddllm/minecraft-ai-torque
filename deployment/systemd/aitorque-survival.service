@@ -1,0 +1,24 @@
+[Unit]
+Description=AI Torque Minecraft Server - Survival
+After=network.target
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/opt/minecraft/aitorque-survival
+ExecStart=/usr/bin/java -Xmx8G -Xms4G -jar paper-1.21.8.jar --nogui
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/minecraft/aitorque-survival
+
+[Install]
+WantedBy=multi-user.target
